@@ -1,0 +1,9 @@
+<%= link_to 'Compose', '#', :class => "btn btn-danger" %>
+
+<hr />
+
+<div class="list-group">
+  <% @folders.each do |folder| %>
+  <%= link_to folder.name, folder_messages_path(:folder_id => folder.name), :class => "list-group-item" %>
+  <% end %>
+</div>

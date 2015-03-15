@@ -1,0 +1,13 @@
+<div>
+  <%= link_to 'Reply', '#', :class => "btn btn-default" %>
+  <%= link_to 'Forward', '#', :class => "btn btn-default" %>
+  <%= link_to 'Delete', '#', :class => "btn btn-danger" %>
+</div>
+<hr />
+<div>
+  <h4><%= @message[:subject] %></h4>
+  <hr />
+  <div><%= @message[:raw][:from].address_list.addresses.first.to_s %></div>
+  <div><%= @message[:html].to_s.html_safe %></div>
+  <div style="margin-top: 50px;" class="text-muted"><%= @message.inspect %></div>
+</div>

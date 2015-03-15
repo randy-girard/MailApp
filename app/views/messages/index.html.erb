@@ -1,0 +1,26 @@
+<table class="table">
+  <tbody>
+    <% @messages.each do |message| %>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>
+        <% if message[:raw][:from].present? %>
+        <%= message[:raw][:from].address_list.addresses.map(&:display_name).join(", ") %>
+        <% end %>
+        <% if message[:raw][:to].present? %>
+        To: <%= message[:raw][:to] %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to folder_message_path(:folder_id => @folder, :id => message[:id]) do %>
+          <%= message[:subject] %>
+          <% if message[:html] || message[:text] %>
+          <span class="text-muted">- <%= truncate(strip_tags((message[:html] || message[:text]).to_s), :length => 100) %></span>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= message[:date] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
